@@ -1,0 +1,58 @@
+\ProvidesPackage{default}[2020/08/31 v1.0 Default macros]
+
+% Author
+\author{Elena Di Lavore}
+
+% Totally necessary packages
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{tipa}
+\usepackage{caption}
+\usepackage{etoolbox}
+\usepackage{stmaryrd} 
+\usepackage{mathtools} % Gives support for commands like \coloneqq, \fatsemi
+\usepackage{bbold} % for \mathbb{1}
+\usepackage{graphicx} % for \reflectbox
+% Drawing diagrams
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+% Including SVG
+\usepackage{svg}
+
+% Theorem styles.
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section] % Numbering theorems according to their section.
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{requestion}[theorem]{Research Question}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{proofs}{Proof}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{exampleth}[theorem]{Example}
+\newtheorem{example}[theorem]{Example}
+
+% Coloring links
+\usepackage{xcolor}
+\definecolor{nordred}{HTML}{bf616a}
+\newcommand{\rubrication}[1]{\textcolor{nordred}{#1}}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=nordred,
+  citecolor=nordred,
+  urlcolor=nordred}
+
+% my packages for my notes
+%\usepackage{/home/talita/pdf-notes/stdnamesmacros}
+%\usepackage{/home/talita/pdf-notes/opengamesmacros}
+%\usepackage{/home/talita/pdf-notes/feedbackmacros}
+%\usepackage{/home/talita/pdf-notes/dialecticamacros}

@@ -1,0 +1,93 @@
+\begin{lemma}
+  The monoidal product is a bifunctor.
+\end{lemma}
+\begin{proof}
+  Let \(g \colon A \gamearrow{\Sigma} B\), \(h \colon C \gamearrow{T} D\), \(g_1 \colon A_1 \gamearrow{\Sigma_1} B_1\) and \(h_1 \colon C_1 \gamearrow{T_1} D_1\) be morphisms in \(\Game{\cat{C}}\).
+
+For the play function, functoriality follows from functoriality of the monoidal product in \(\Game{\cat{C}}\).
+\begin{align*} \play{(g \dcomp h) \tensor (g_1 \dcomp h_1)}(\sigma,\tau,\sigma_1,\tau_1) \defn & \play{g \dcomp h}(\sigma,\tau) \otimes \play{g_1 \dcomp h_1}(\sigma_1,\tau_1) \\
+\defn & (\play{g}(\sigma) \dcomp \play{h}(\tau)) \otimes (\play{g_1}(\sigma_1) \dcomp \play{h_1}(\tau_1)) \\
+=& (\play{g}(\sigma) \tensor \play{g_1}(\sigma_1)) \dcomp (\play{h}(\tau) \tensor \play{h_1}(\tau_1)) \\
+\codefn& \play{g \tensor g_1}(\sigma,\sigma_1) \dcomp \play{h \tensor h_1}(\tau,\tau_1) \\
+\codefn& \play{(g \tensor g_1) \dcomp (h \tensor h_1)}(\sigma,\sigma_1,\tau,\tau_1) \\
+\end{align*}
+
+For the best response function, functoriality follows from the feedback axioms, functoriality of \(\delay\) and functoriality of the monoidal product in \(\Game{\cat{C}}\).
+\begin{align*} &&&(\sigma,\sigma',\tau,\tau',\sigma_1,\sigma'_1,\tau_1,\tau'_1) \in \best{(g \dcomp h) \tensor (g_1 \dcomp h_1)}(\kappa) \\
+&\iff &&(\sigma,\sigma',\tau,\tau') \in \best{g \dcomp h}(\fbk[C_1](\kappa \dcomp (\id{A} \tensor \play{g_1 \dcomp h_1}(\sigma_1,\tau_1)))) \\
+&&\land& (\sigma_1,\sigma'_1,\tau_1,\tau'_1) \in \best{g_1 \dcomp h_1}(\fbk[C](\kappa \dcomp (\play{g \dcomp h}(\sigma,\tau) \tensor \id{A_1}))) \\
+&\iff &&(\sigma,\sigma') \in \best{g}(\delay[\play{h}(\tau)] \dcomp \fbk[C_1](\kappa \dcomp (\id{A} \tensor \play{g_1 \dcomp h_1}(\sigma_1,\tau_1)))) \\
+&&\land& (\tau,\tau') \in \best{h}(\fbk[C_1](\kappa \dcomp (\id{A} \tensor \play{g_1 \dcomp h_1}(\sigma_1,\tau_1))) \dcomp \play{g}(\sigma)) \\
+&&\land& (\sigma_1,\sigma'_1) \in \best{g_1}(\delay[\play{h_1}(\tau_1)] \dcomp \fbk[C](\kappa \dcomp (\play{g \dcomp h}(\sigma,\tau) \tensor \id{A_1}))) \\
+&&\land& (\tau_1,\tau'_1) \in \best{h_1}(\fbk[C](\kappa \dcomp (\play{g \dcomp h}(\sigma,\tau) \tensor \id{A_1})) \dcomp \play{g_1}(\sigma_1))\\
+&\iff &&(\sigma,\sigma') \in \best{g}(\fbk[B_1]((\delay[\play{h}(\tau)] \tensor \delay[\play{h_1}(\tau_1)]) \dcomp \kappa \dcomp (\id{A} \tensor \play{g_1}(\sigma_1)))) \\
+&&\land& (\tau,\tau') \in \best{h}(\fbk[C_1](\kappa \dcomp (\play{g}(\sigma) \tensor \play{g_1}(\sigma_1)) \dcomp (\id{B} \tensor \play{h_1}(\tau_1)))) \\
+&&\land& (\sigma_1,\sigma'_1) \in \best{g_1}(\fbk[B]((\delay[\play{h}(\tau)] \tensor \delay[\play{h_1}(\tau_1)])\dcomp \kappa \dcomp (\play{g}(\sigma) \tensor \id{A_1}))) \\
+&&\land& (\tau_1,\tau'_1) \in \best{h_1}(\fbk[C]((\kappa \dcomp (\play{g}(\sigma) \tensor \play{g_1}(\sigma_1)) \dcomp (\play{h}(\tau) \tensor \id{B_1})))\\
+&\iff &&(\sigma,\sigma') \in \best{g}(\fbk[B_1](\delay[\play{h \tensor h_1}(\tau,\tau_1)] \dcomp \kappa \dcomp (\id{A} \tensor \play{g_1}(\sigma_1)))) \\
+&&\land& (\tau,\tau') \in \best{h}(\fbk[C_1](\kappa \dcomp \play{g \tensor g_1}(\sigma,\sigma_1) \dcomp (\id{B} \tensor \play{h_1}(\tau_1)))) \\
+&&\land& (\sigma_1,\sigma'_1) \in \best{g_1}(\fbk[B](\delay[\play{h \tensor h_1}(\tau,\tau_1)] \dcomp \kappa \dcomp (\play{g}(\sigma) \tensor \id{A_1}))) \\
+&&\land& (\tau_1,\tau'_1) \in \best{h_1}(\fbk[C]((\kappa \dcomp \play{g \tensor g_1}(\sigma,\sigma_1) \dcomp (\play{h}(\tau) \tensor \id{B_1})))\\
+&\iff &&(\sigma,\sigma',\sigma_1,\sigma'_1) \in \best{g \tensor g_1}(\delay[\play{h \tensor h_1}(\tau,\tau_1)] \dcomp \kappa) \\
+&&\land& (\tau,\tau',\tau_1,\tau'_1) \in \best{h \tensor h_1}(\kappa \dcomp \play{g \tensor g_1}(\sigma,\sigma_1)) \\
+&\iff &&(\sigma,\sigma',\sigma_1,\sigma'_1,\tau,\tau',\tau_1,\tau'_1) \in \best{(g \tensor g_1) \dcomp (h \tensor h_1)}(\kappa)
+\end{align*}
+\end{proof}
+
+\begin{lemma}
+  The monoidal product is associative.
+\end{lemma}
+\begin{proof}
+  The associator \(\associator\) in \(\Game{\cat{C}}\) is lifted from the associator \(\aassociator\) in \(\cat{C}\).
+  \begin{align*}
+    \associator_{A,C,E} \colon & A \tensor (C \tensor E) \gamearrow{1} (A \tensor C) \tensor E \\
+&\begin{cases}
+\play{\associator_{A,C,E}}(\ast) \defn \aassociator_{A,C,E}\\
+\best{\associator_{A,C,E}}(\kappa) \defn \{(\ast,\ast)\}
+\end{cases}
+\end{align*}
+It is an isomorphism because \(\aassociator\) is.
+Let \(g \colon A \gamearrow{\Sigma} B\), \(h \colon C \gamearrow{T} D\) and \(l \colon E \gamearrow{R} F\) be morphisms in \(\Game{\cat{C}}\).
+In order to prove naturality, we need to check that \((g \tensor (h \tensor l)) \dcomp \associator_{B,D,F} = \associator_{A,C,E} \dcomp ((g \tensor h) \tensor l)\).
+For the play function, associativity follows from associativity of the monoidal product in \(\Game{\cat{C}}\).
+\begin{align*}
+  \play{(g \tensor (h \tensor l)) \dcomp \associator_{B,D,F}}((\sigma, (\tau, \rho)),\ast)
+\defn& \play{g \tensor (h \tensor l)}(\sigma, (\tau, \rho)) \dcomp \aassociator_{B,D,F} \\
+\defn& (\play{g}(\sigma) \tensor (\play{h}(\tau) \tensor \play{l}(\rho))) \dcomp \aassociator_{B,D,F} \\
+=& \aassociator_{A,C,E} \dcomp ((\play{g}(\sigma) \tensor \play{h}(\tau)) \tensor \play{l}(\rho)) \\
+\codefn& \play{\associator_{A,C,E} \dcomp ((g \tensor h) \tensor l)}(\ast,((\sigma, \tau), \rho)) \end{align*}
+
+For the best response function, associativity follows from the feedback axioms, the fact that \(\delay\) us strict monoidal and associativity in \(\cat{C}\).
+\begin{align*} &&&(\sigma,\sigma',\tau,\tau',\rho,\rho',\ast,\ast) \in \best{(g \tensor (h \tensor l)) \dcomp \associator_{B,D,F}}(\aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa) \\
+&\iff&&(\sigma,\sigma',\tau,\tau',\rho,\rho') \in \best{g \tensor (h \tensor l)}(\delay[\aassociator_{B,D,F}] \dcomp \aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa) \\
+&&\land& (\ast,\ast) \in \best{\associator_{B,D,F}}(\aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa \dcomp \play{g \tensor (h \tensor l)}(\sigma,\tau,\rho))\\
+&\iff&&(\sigma,\sigma',\tau,\tau',\rho,\rho') \in \best{g \tensor (h \tensor l)}(\kappa) \\
+&\iff & & (\sigma,\sigma') \in \best{g}(\fbk[D \tensor F](\kappa \dcomp (\id{A} \tensor \play{h \tensor l}(\tau,\rho))))\\
+&&\land&(\tau,\tau',\rho,\rho') \in \best{h \tensor l}(\fbk[B](\kappa \dcomp (\play{g}(\sigma) \tensor \id{C \tensor E})))\\
+&\iff&& (\sigma,\sigma') \in \best{g}(\fbk[D](\fbk[F] (\aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa \dcomp (\id{A} \tensor (\id{C} \tensor \play{l}(\rho))) \dcomp \aassociator_{A,C,F}) \dcomp (\id{A} \tensor \play{h}(\tau))))\\
+&&\land& (\tau,\tau') \in \best{h}(\fbk[F](\fbk[B] (\kappa \dcomp (\play{g}(\sigma) \tensor \id{C \tensor E}))\dcomp (\id{C} \tensor \play{l}(\rho)))) \\
+&&\land& (\rho,\rho') \in \best{l}(\fbk[D](\fbk[B] (\kappa \dcomp (\play{g}(\sigma) \tensor \id{C \tensor E}))\dcomp (\play{h}(\tau) \tensor \id{E}))) \\
+&\iff&& (\sigma,\sigma') \in \best{g}(\fbk[D](\fbk[F] (\aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa \dcomp \aassociator_{A,C,E} \dcomp (\id{A \tensor C} \tensor \play{l}(\rho))) \dcomp (\id{A} \tensor \play{h}(\tau))))\\
+&&\land& (\tau,\tau') \in \best{h}(\fbk[B](\fbk[F] (\aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa \dcomp \aassociator_{A,C,E} \dcomp (\id{A \tensor C} \tensor \play{l}(\rho))) \dcomp (\play{g}(\sigma) \tensor \id{C}))) \\
+&&\land& (\rho,\rho') \in \best{l}(\fbk[B \tensor D](\aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa \dcomp \aassociator_{A,C,E} \dcomp ((\play{g}(\sigma) \tensor \play{h}(\tau)) \tensor \id{E}))) \\
+&\iff&& (\sigma,\sigma',\tau,\tau') \in \best{g \tensor h}(\fbk[F] (\aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa \dcomp \aassociator_{A,C,E} \dcomp (\id{A \tensor C} \tensor \play{l}(\rho))))\\
+&&\land& (\rho,\rho') \in \best{l}(\fbk[B \tensor D](\aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa \dcomp \aassociator_{A,C,E} \dcomp (\play{g \tensor h}(\sigma,\tau) \tensor \id{E}))) \\
+&\iff&& (\sigma,\sigma',\tau,\tau',\rho,\rho') \in \best{(g \tensor h) \tensor l}(\aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa \dcomp \aassociator_{A,C,E})\\
+&\iff&& (\sigma,\sigma',\tau,\tau',\rho,\rho') \in \best{(g \tensor h) \tensor l}(\aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa \dcomp \aassociator_{A,C,E})\\
+&&\land& (\ast,\ast) \in \best{\associator_{A,C,E}}(\delay[\play{(g \tensor h) \tensor l}(\sigma,tau,\rho)] \dcomp \aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa)\\
+&\iff&& (\ast,\ast,\sigma,\sigma',\tau,\tau',\rho,\rho') \in \best{\associator_{A,C,E} \dcomp ((g \tensor h) \tensor l)}(\aassociator^{-1}_{\delay[B],\delay[D],\delay[F]} \dcomp \kappa)
+\end{align*}
+
+\end{proof}
+
+\begin{lemma}
+  The monoidal product is unital.
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+\begin{lemma}
+  The triangle and pentagon equations hold.
+\end{lemma}
+\begin{proof}
+\end{proof}

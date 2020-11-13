@@ -1,0 +1,38 @@
+We consider a symmetric monoidal category \(\cat{C}\) with feedback \(\fbk \colon \cat{C}(A \tensor \delay S, B \tensor S) \to \cat{C}(A,B) \), where \(\delay \colon \cat{C} \to \cat{C}\) is a faithful strict monoidal endofunctor on \(\cat{C}\) that preserves feedback (it is a feedback functor).
+We think of \(\cat{C}\) as the category of `actions' or `things that happen'.
+The category \(\Game{\cat{C}}\) then gives the actions that can happen depending on a choice of a parameter (which we think of as strategy or policy).
+
+Intuitively, morphisms are (equivalence relations of) families of morphisms in \(\cat{C}\) parametrized by a set \(\Sigma\) together with a best response function.
+
+\begin{definition}[The category \(\Game{\cat{C}}\)]
+  Objects are the objects of \(\cat{C}\).
+  A morphism \(g \colon A \gamearrow{\Sigma} B\) in \(\Game{\cat{C}}\) is given by:
+  \begin{itemize}
+    \item A *play function* \(\play{g} \colon \Sigma \to \cat{C}(A,B)\).
+    \item A *best response function* \(\best{g} \colon \cat{C}(\delay[B],A) \to \rel{\Sigma}\).
+  \end{itemize}
+  Two morphisms, \(g \colon A \gamearrow{\Sigma} B\) and \(g' \colon A \gamearrow{\Sigma'} B\), are considered equal whenever there is an isomorphism of sets \(s \colon \Sigma \cong \Sigma'\) such that, for every \(\sigma,\sigma' \in \Sigma\),
+  \begin{itemize}
+    \item \(\play{g}(\sigma) = \play{g'}(s(\sigma))\)
+    \item \((\sigma,\sigma') \in \best{g}(\kappa) \iff (s(\sigma),s(\sigma')) \in \best{g'}(\kappa) \)
+  \end{itemize}
+\end{definition}
+
+We think of \(\Sigma\) as the set of possible strategies for a game.
+Choosing the strategy gives a way of playing the game, which is represented with a morphism in \(\cat{C}\).
+The strategy is chosen depending on the context of the game: for every context the best response function returns a relation of preference over the set of strategies \(\Sigma\).
+The fixpoint of this relation gives, given the context, the preferred strategy.
+
+\begin{definition}[Categorical structure]
+  Let \(g \colon A \gamearrow{\Sigma} B\) and \(h \colon B \gamearrow{T} C\).
+  Their composition \(g \dcomp h \colon A \gamearrow{\Sigma \times T} C\) is given by:
+  \begin{itemize}
+    \item \(\play{g \dcomp h}(\sigma, \tau) \defn \play{g}(\sigma) \dcomp \play{h}(\tau)\).
+    \item \(\best{g \dcomp h}(\kappa) \defn \{(\sigma,\sigma',\tau,\tau') \in (\Sigma \times T)^2 : (\sigma, \sigma') \in \best{g}(\delay[\play{h}(\tau)] \dcomp \kappa) \land (\tau, \tau') \in \best{h}(\kappa \dcomp \play{g}(\sigma))\}\)
+  \end{itemize}
+  \(\id{A} \colon A \gamearrow{1} A\) is given by:
+  \begin{itemize}
+    \item \(\play{\id{A}}(\ast) \defn \id{A}\).
+    \item \(\best{\id{A}}(\kappa) \defn \{(\ast, \ast)\}\).
+  \end{itemize}
+\end{definition}

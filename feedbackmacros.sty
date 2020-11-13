@@ -1,0 +1,19 @@
+\ProvidesPackage{feedbackmacros}[2020/09/01 v1.0 macros for categories with feedback]
+% depends on default.sty
+% macros for categories with delayed feedback
+\usepackage{xifthen}
+\newcommand{\fbk}[1][]{\circlearrowleft_{#1}}
+\newcommand{\delay}[1][]{\ifthenelse{\equal{#1}{}}{\partial}{\partial(#1)}}
+%\newcommand{\trace}[1][]{\mathbf{Tr}_{#1}} % symbol for the trace
+
+% macros for the Int construction
+%\newcommand{\Int}[1]{\mathbf{Int}(#1)} % Int construction symbol
+%\newcommand{\tensorInt}{\boxtimes} % monoidal product in Int(C)
+% macros for processes on streams with memory
+%\newcommand{\stream}[1]{\underline{#1}}
+
+% macros for Markov decision processes modelled with feedback
+%\newcommand{\decmaker}{\mathcal{D}}
+%\newcommand{\bayesupdater}{\mathcal{B}}
+%\newcommand{\transition}{\mathcal{T}}
+%\newcommand{\observation}{\mathcal{O}}

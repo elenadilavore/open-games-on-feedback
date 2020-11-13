@@ -1,0 +1,52 @@
+\ProvidesPackage{stdnamesmacros}[2020/08/31 v1.0 macros for default names of stuff]
+% depends on default.sty
+%\usepackage{/home/talita/pdf-notes/probabilitymacros}
+%\usepackage{/home/talita/pdf-notes/monoidmacros}
+%\usepackage{/home/talita/pdf-notes/graphmacros}
+
+% standard names for normal mathematics stuff
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\rank}{\mathsf{rk}} % rank of a matrix
+% set theory stuff
+\newcommand{\parti}{\wp} % powerset of a set (insieme delle parti)
+\newcommand{\union}{\cup}
+\newcommand{\Union}{\bigcup}
+\newcommand{\intersection}{\cap}
+\newcommand{\card}[1]{\vert #1 \vert}
+\newcommand{\family}[1]{\mathcal{#1}} % families of sets, graphs, whatever
+% standard category name
+\newcommand{\cat}[1]{\mathsf{#1}}
+
+% standard names for categories
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\commacat}[2]{#1 \mid #2} % comma category
+
+% other commands
+\newcommand{\defn}{\coloneqq}
+\newcommand{\co}[1]{\text{\reflectbox{\(#1\)}}}
+\newcommand{\codefn}{\co{\defn}}
+\renewcommand{\iff}{\Leftrightarrow}
+\renewcommand{\implies}{\Rightarrow}
+% stuff that is in every category
+\newcommand{\id}[1]{\mathbb{1}_{#1}}
+\newcommand{\op}{^{op}}
+\newcommand{\dcomp}{\mathbin{;}} % symbol for composition in diagrammatic order
+
+% macros for structured categories
+\newcommand{\tensor}[1][\otimes]{#1} % monoidal product
+\newcommand{\inthom}{\multimap}
+\newcommand{\swap}[1]{\sigma_{#1}} % symmetry (or braiding)
+\newcommand{\dual}[1]{#1^{\ast}} % dualities
+\newcommand{\ddual}[1]{#1^{\ast\ast}} % double duals
+\newcommand{\pivot}[1]{p_{#1}} % pivotal structure
+\newcommand{\twist}[1]{\theta_{#1}} % twist structure
+\newcommand{\proj}[1]{\pi_{#1}} % projections
+
+\newcommand{\proarrow}{\mathrel{\ooalign{$\longrightarrow$\cr % arrow to the right with a bar
+  \hidewidth\raisebox{.1ex}{$\shortmid$}\hidewidth\cr}}}
+\newcommand{\leftproarrow}{\mathrel{\ooalign{$\longleftarrow$\cr % arrow to the left with a bar
+    \hidewidth\raisebox{.1ex}{$\shortmid$}\hidewidth\cr}}}
+
+\newcommand{\adjoint}{\dashv}

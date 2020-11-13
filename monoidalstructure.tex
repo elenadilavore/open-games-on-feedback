@@ -1,0 +1,8 @@
+On objects, the monoidal product coincides with the monoidal product in \(\cat{C}\).
+On morphisms, it is lifted from \(\cat{C}\).
+Let \(g \colon A \gamearrow{\Sigma} B\) and \(h \colon C \gamearrow{T} D\) be two morphisms in \(\Game{\cat{C}}\).
+Their monoidal product \(g \tensor h \colon A \tensor C \gamearrow{\Sigma \times T} B \tensor D\) is given by:
+\begin{itemize}
+  \item \(\play{g \tensor h} (\sigma,\tau) \defn \play{g}(\sigma) \tensor \play{h}(\tau)\).
+  \item \(\best{g \tensor h} (\kappa) \defn \{(\sigma, \sigma', \tau, \tau') \in (\Sigma \times T)^{2} : (\sigma, \sigma') \in \best{g}(\fbk[D](\kappa \dcomp (\id{A} \tensor \play{h}(\tau)))) \land (\tau, \tau') \in \best{h}(\fbk[B](\kappa \dcomp (\play{g}(\sigma) \tensor \id{C})))\}\)
+\end{itemize}

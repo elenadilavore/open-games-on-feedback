@@ -1,0 +1,19 @@
+\begin{definition}[Delay functor]
+On objects, the delay functor coincides with the delay functor in \(\cat{C}\).
+On morphisms, it is lifted from \(\cat{C}\).
+Let \(g \colon A \gamearrow{\Sigma} B\) be a morphism in \(\Game{\cat{C}}\).
+Then \(\delay[g] \colon \delay[A] \gamearrow{\Sigma} \delay[B]\) is given by:
+\begin{itemize}
+  \item \(\play{\delay[g]}(\sigma) \defn \delay[\play{g}(\sigma)]\).
+  \item \(\best{\delay[g]}(\delay[\kappa]) \defn \best{g}(\kappa)\).
+    This gives the definition of the best response function because \(\delay\) is faithful.
+\end{itemize}
+\end{definition}
+\begin{definition}[Feedback operator]
+  Let \(g \colon \delay S \tensor A \gamearrow{\Sigma} S \tensor B\) be a morphism in \(\Game{\cat{C}}\).
+  Then \(\fbk[S]g \colon A \gamearrow{\Sigma} B\) is given by:
+  \begin{itemize}
+    \item \(\play{\fbk[S]g}(\sigma) \defn \fbk[S](\play{g}(\sigma))\).
+    \item \(\best{\fbk[S]g}(\kappa) \defn \best{g}(\kappa \tensor \id{\delay S})\).
+  \end{itemize}
+\end{definition}

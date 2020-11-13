@@ -1,0 +1,18 @@
+\ProvidesPackage{opengamesmacros}[2020/08/31 v1.0 macros for open games]
+% depends on default.sty and stdnamesmacros.sty
+%\usepackage{xifthen}
+% game over a category
+\renewcommand{\Game}[1]{\mathsf{Game}(#1)}
+% play function and best response function
+\newcommand{\play}[1]{\mathsf{P}_{#1}}
+\newcommand{\best}[1]{\mathsf{B}_{#1}}
+\newcommand{\gamearrow}[1]{\overset{#1}{\proarrow}}
+\newcommand{\context}[3]{#1(#2, #3)}
+\newcommand{\rel}[1]{\mathit{Rel}(#1)}
+%\newcommand{\lift}[1][]{\ifthenelse{\equal{#1}{}}{\hat{\ }}{\hat{#1}}}
+\newcommand{\associator}{\mathbb{a}}
+\newcommand{\aassociator}{\mathbf{a}}
+\newcommand{\unitorl}{\mathbb{l}}
+\newcommand{\uunitorl}{\mathbf{l}}
+\newcommand{\unitorr}{\mathbb{r}}
+\newcommand{\uunitorr}{\mathbf{r}}

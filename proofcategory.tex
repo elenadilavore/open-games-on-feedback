@@ -1,0 +1,55 @@
+\begin{lemma}
+  Composition is associative
+\end{lemma}
+\begin{proof}
+  Let \(g \colon A \gamearrow{\Sigma} B\), \(h \colon B \gamearrow{T} C\) and \(l \colon C \gamearrow{R} D\) be morphisms in \(\Game{\cat{C}}\).
+For the play function, associativity follows from associativity in \(\cat{C}\).
+\begin{align*} \play{g \dcomp (h \dcomp l)}(\sigma, \tau, \rho) \defn& \play{g}(\sigma) \dcomp (\play{h}(\tau) \dcomp \play{l}(\rho)) \\
+=& (\play{g}(\sigma) \dcomp \play{h}(\tau)) \dcomp \play{l}(\rho) \\
+\codefn& \play{(g \dcomp h) \dcomp l}(\sigma, \tau, \rho) \end{align*}
+
+For the best response function, associativity follows from functoriality of \(\delay\) and associativity in \(\cat{C}\).
+\begin{align*}(\sigma,\sigma',\tau,\tau',\rho,\rho') \in \best{g \dcomp (h \dcomp l)}(\kappa) \iff& & & (\sigma,\sigma') \in \best{g}(\delay[\play{h \dcomp l}(\tau,\rho)] \dcomp \kappa)\\
+& &\land & (\tau,\tau',\rho,\rho') \in \best{h\dcomp l} (\kappa \dcomp \play{g}(\sigma))\\
+\iff& & & (\sigma,\sigma') \in \best{g}(\delay[\play{h}(\tau) \dcomp \play{l}(\rho)] \dcomp \kappa)\\
+& & \land & (\tau,\tau') \in \best{h}(\delay[\play{l}(\rho)] \dcomp \kappa \dcomp \play{g}(\sigma))\\
+& &\land & (\rho,\rho') \in \best{l}(\kappa \dcomp \play{g}(\sigma) \dcomp \play{h}(\tau))\\
+\iff& & & (\sigma,\sigma') \in \best{g}(\delay[\play{h}(\tau)] \dcomp \delay[\play{l}(\rho)] \dcomp \kappa)\\
+& & \land & (\tau,\tau') \in \best{h}(\delay[\play{l}(\rho)] \dcomp \kappa \dcomp \play{g}(\sigma))\\
+& &\land & (\rho,\rho') \in \best{l}(\kappa \dcomp \play{g\dcomp h}(\sigma,\tau))\\
+\iff& & & (\sigma,\sigma',\tau,\tau') \in \best{g \dcomp h}(\delay[\play{l}(\rho)] \dcomp \kappa)\\
+& &\land & (\rho,\rho') \in \best{l}(\kappa \dcomp \play{g\dcomp h}(\sigma,\tau))\\
+\iff & & &(\sigma,\sigma',\tau,\tau',\rho,\rho') \in \best{(g \dcomp h) \dcomp l}(\kappa)
+\end{align*}
+\end{proof}
+
+\begin{lemma}
+  Composition is unital.
+\end{lemma}
+\begin{proof}
+  Let \(g \colon A \gamearrow{\Sigma} B\) be a morphism in \(\Game{\cat{C}}\).
+For the play function, unitality follows from unitality in \(\cat{C}\).
+\[\play{\id{A} \dcomp g}(\ast,\sigma) \defn \play{\id{A}}(\ast) \dcomp \play{g}(\sigma) = \id{A} \dcomp \play{g}(\sigma) = \play{g}(\sigma) \]
+\[\play{g \dcomp \id{B}}(\sigma,\ast) \defn \play{g}(\sigma) \dcomp \play{\id{B}}(\ast) = \play{g}(\sigma) \dcomp \id{B} = \play{g}(\sigma)\]
+
+For the best response function, unitality follows from functoriality of \(\delay\) and unitality in \(\cat{C}\).
+\begin{align*} (\ast,\ast,\sigma,\sigma') \in \best{\id{A} \dcomp g}(\kappa) &\iff && (\ast,\ast) \in \best{\id{A}}(\delay[\play{g}(\sigma)] \dcomp \kappa)\\
+&&\land& (\sigma,\sigma') \in \best{g}(\kappa \dcomp \play{\id{A}}(\ast))\\
+&\iff && (\sigma,\sigma') \in \best{g}(\kappa \dcomp \id{A})\\
+&\iff && (\sigma,\sigma') \in \best{g}(\kappa)
+\end{align*}
+\begin{align*} (\sigma,\sigma',\ast,\ast) \in \best{g \dcomp \id{B}}(\kappa) &\iff &&  (\sigma,\sigma') \in \best{g}(\delay[\play{\id{B}}(\ast)] \dcomp \kappa)\\
+&&\land& (\ast,\ast) \in \best{\id{B}}(\kappa \dcomp \play{g}(\sigma))\\
+&\iff && (\sigma,\sigma') \in \best{g}(\delay[\id{B}] \dcomp \kappa)\\
+&\iff && (\sigma,\sigma') \in \best{g}(\id{\delay[B]} \dcomp \kappa)\\
+&\iff && (\sigma,\sigma') \in \best{g}(\kappa)
+\end{align*}
+\end{proof}
+
+\begin{proposition}
+  It is a category.
+\end{proposition}
+\begin{proof}
+  Composition clearly preserves equivalence classes.
+  Composition is associative and unital.
+\end{proof}
